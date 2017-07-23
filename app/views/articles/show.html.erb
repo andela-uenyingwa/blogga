@@ -2,10 +2,13 @@
 <p>
   Tags:
   <% @article.tags.each do |tag| %>
-  <% binding.pry %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
 </p>
+<p>
+<% if @article.image.exists? %>
+  <%= image_tag @article.image.url %></p>
+<% end %>
 <p><%= @article.body %></p>
 <h3><%= @article.comments.count %> Comments</h3>
 <%= render partial: 'comments/form' %>
