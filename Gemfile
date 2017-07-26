@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'pry'
 # Use paperclip for file attachments and uploading
 gem 'paperclip'
+# Use Sorcery for authentication
+gem 'sorcery'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
