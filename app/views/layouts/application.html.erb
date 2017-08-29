@@ -3,26 +3,25 @@
   <head>
     <title>Blogga</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Prociono" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="flash"><%= flash.notice %></p>
-    <div id="container">
-      <div id="conrent">
-        <%= yield %>
-        <hr>
-        <h6>
-          <% if logged_in? %>
-            <%= "Logged in as #{current_user.email}" %>
-            <%= link_to "(logout)", logout_path %>
-          <% else %>
-            <%= link_to "(login)", login_path %>
-          <% end %>
-        </h6>
-      </div>
-    </div>
+  <%= render("layouts/navbar") %>
+  <p class="flash"><%= flash.notice %></p>
+    <%= yield %>
+    <% if logged_in? %>
+      <%= "#{current_user.email}" %>
+      <%= link_to "(logout)", logout_path %>
+    <% else %>
+      <%= link_to "(login)", login_path %>
+    <% end %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
   </body>
 </html>

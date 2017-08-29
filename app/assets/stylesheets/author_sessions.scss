@@ -1,0 +1,30 @@
+.register-page {
+  background-image: image-url('home_page.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: gray;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form-container {
+    width: 20vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.5);
+      label {
+        color: white;
+      }
+
+      .btn {
+        display: block;
+        margin: 0 auto;
+      }
+  }
+}
+

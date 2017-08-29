@@ -1,29 +1,41 @@
-<%= form_for(@article, html: { multipart: true }) do |f| %>
-  <ul>
-  <% @article.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :tag_list %><br />
-    <%= f.text_area :tag_list %>
-  </p>
-  <p>
-    <% if @article.image.exists? %>
-      <%= image_tag @article.image.url(:medium) %><br/>
-    <% end %>
-    <%= f.label :image, "Attach an image" %><br />
-    <%= f.file_field :image %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-  <% end %>
+<div class="row new-form">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-image">
+        <% if @article.image.exists? %>
+          <%= image_tag @article.image.url %>
+        <% end %>
+      </div>
+      <div class="card-content">
+        <%= form_for(@article, html: { multipart: true }) do |f| %>
+          <div>
+            <ul>
+            <% @article.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+            </ul>
+          </div>
+          <div>
+            <%= f.label :title %><br />
+            <%= f.text_field :title %>
+          </div>
+          <div>
+            <%= f.label :body %><br />
+            <%= f.text_area :body %>
+          </div>
+          <div>
+            <%= f.label :add_tag %><br />
+            <%= f.text_area :tag_list %>
+          </div>
+          <div class="card-action">
+            <a id="back-arrow" class="btn white-text" href="<%= articles_path %>"><i class='material-icons'>arrow_back</i> Articles</a>
+            <div class="file-field btn">
+              <%= f.label :image, "Upload image" %>
+              <%= f.file_field :image %>
+            </div>
+            <%= f.submit "Create", class: "white-text btn" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,16 @@
-<%= form_tag author_sessions_path, method: :post do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<% end %>
+<div class="register-page">
+  <div class="form-container">
+    <%= form_tag author_sessions_path, method: :post do %>
+      <div class="row">
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+      </div>
+      <div class="row">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+      </div>
+      <%= submit_tag "Login", class: 'btn btn-large white-text' %>
+    <% end %>
+  </div>
+</div>
 <%= link_to 'Back', articles_path %>

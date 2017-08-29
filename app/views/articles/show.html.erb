@@ -1,18 +1,35 @@
-<h1><%= @article.title %></h1>
-<p>
-  Tags:
-  <% @article.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
-  <% end %>
-</p>
-<p>
-<% if @article.image.exists? %>
-  <%= image_tag @article.image.url %></p>
-<% end %>
-<p><%= @article.body %></p>
-<h3><%= @article.comments.count %> Comments</h3>
-<%= render partial: 'comments/form' %>
-<%= render partial: 'articles/comment', collection: @article.comments.reverse %><br/>
-<%= link_to "<< Back to Articles List", articles_path %>
-<%= link_to "Edit", edit_article_path(@article) %>
-<%= link_to "Delete", article_path(@article), data: {confirm: "Really delete the article?"}, method: :delete %>
+<div class="row show-form">
+  <div class="col s12">
+    <h1 class="articles-header"><%= @article.title %></h1>
+    <div>
+      <% if @article.image.exists? %>
+        <%= image_tag @article.image.url %>
+      <% else %>
+        <img class src="http://lorempixel.com/400/200">
+      <% end %>
+    </div>
+    <div>
+      Tags:
+      <% @article.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+      <% end %>
+    </div>
+    <div class="card-panel">
+      <span><%= @article.body %></span>
+    </div>
+    <div class="icons">
+      <a class="btn white-text controls" href="<%= articles_path %>"><i class='material-icons'>arrow_back</i> Articles</a>
+      <a class="btn white-text controls" href="<%= edit_article_path(@article) %>"><i class="material-icons">edit</i>Edit</a>
+      <a class="btn white-text controls" href="<%= article_path(@article) %>" data-confirm="Really delete the article?" data-method="delete"><i class="material-icons">delete</i>Delete</a>
+    </div>
+    <div>
+      <div class="card-panel" id="comments">
+      <h3><%= @article.comments.count %> Comments</h3>
+      <%= render partial: 'articles/comment', collection: @article.comments.reverse %><br/>
+      </div>
+      <div class="card-panel">
+      <%= render partial: 'comments/form' %>
+      </div>
+    </div>
+  </div>
+</div>

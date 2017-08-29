@@ -1,9 +1,13 @@
-<h1>All Tags</h1>
-<ul>
-  <% @tags.each do |tag| %>
-    <li>
-      <%= tag.name %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to "<< Back to Articles List", articles_path %>
+<div class="tags">
+  <h1>All Tags</h1>
+    <div class="card-panel">
+      <ol>
+        <% @tags.each do |tag| %>
+          <li>
+            <%= tag.name %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  <a id="back-arrow" class="btn teal white-text" href="<%= articles_path %>"><i class='material-icons'>arrow_back</i> Articles</a>
+</div>
